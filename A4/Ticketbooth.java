@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class Ticketbooth
 {
     private Tickets tickets;
@@ -54,59 +52,53 @@ public class Ticketbooth
     }
 
     //Method that adds an element to an array and returns number of opus cards
-    public int addCardP(OPUSCard[] org, OPUSCard elementToAdd){
-        OPUSCard[] test1 = new OPUSCard[org.length+1];
-        for (int i = 0; i < org.length; i++)
-        {
-            test1[i] = org[i];
-        }
-        test1[test1.length-1] = elementToAdd;
-        return test1.length;
-    }
-
-    //Method that adds an element to an array and returns number of opus cards
-    public int addCard(){
+    public int addCard(OPUSCard nO){
 
         if (card.length == 0){
             OPUSCard[] test1 = new OPUSCard[1];
-            OPUSCard ele = new OPUSCard();
-            test1[0] = ele;
+            test1[0] = nO;
             card = test1;
             return card.length;
         }
 
         else {
-                OPUSCard[] test1 = new OPUSCard[card.length + 1];
-                for (int i = 0; i < card.length; i++) {
-                    test1[i] = card[i];
-                }
-                OPUSCard ele = new OPUSCard();
-                test1[test1.length - 1] = ele;
-                card = test1;
-                return card.length;
+            OPUSCard[] test1 = new OPUSCard[card.length + 1];
+            for (int i = 0; i < card.length; i++) {
+                test1[i] = card[i];
             }
+            test1[test1.length - 1] = nO;
+            card = test1;
+            return card.length;
+        }
     }
 
     //Method that removes a card from ticketbooth
-    public boolean removeCard(){
-        if (card.length == 0){
+    public boolean removeCard(int choice)
+    {
+        int count = 0;
+        if (card.length == 0)
+        {
             return false;
         }
-        else{
-                OPUSCard[] test1 = new OPUSCard[card.length-1];
-            for (int i = 0; i < card.length; i++) {
-                test1[i] = card[i];
+        else
+        {
+            OPUSCard[] test1 = new OPUSCard[card.length-1];
+            for(int i = 0; i < (card.length); i++)
+            {
+                if(i != (choice))
+                {
+                    test1[count] = card[i];
+                    count++;
+                }
             }
             card = test1;
             return true;
         }
-
     }
 
-    //Method that updates expiry date and year of opus card
-    public void updateOpus(int year, int month, OPUSCard Opus){
-        Opus.setExpMonth(month);
-        Opus.setExpYear(year);
+    public void updateOpus(int year, int month, int i){
+        card[i].setExpMonth(month);
+        card[i].setExpYear(year);
     }
 
     //Add tickets to ticketbooth
@@ -124,11 +116,21 @@ public class Ticketbooth
         return other.totalOpus() == that.totalOpus();
     }
 
-
     @Override
     public String toString() {
-        return "Ticketbooth{" +
-                "tickets=" + tickets +
-                '}' + "Opus cards" + Arrays.toString(card);
+        StringBuilder sb = new StringBuilder("").append(tickets).append("\n");
+        if(card.length == 0)
+        {
+            sb.append("\nNo OPUS Cards");
+        }
+        else
+        {
+            for(int i = 0; i < card.length;i++)
+            {
+                sb.append("\n").append(card[i].toString());
+            }
+        }
+        return sb.toString();
+
     }
 }
