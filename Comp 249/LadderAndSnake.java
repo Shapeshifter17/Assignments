@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 
 class Gamers{
@@ -7,6 +8,11 @@ class Gamers{
         position = 0;
     }
 
+    //Constructor that creates itself x times
+    public Gamers(int x){
+
+    }
+
     public void add(int i){
         position = position + i;
         int sOrL = LadderAndSnake.checkBoard(i);
@@ -14,7 +20,7 @@ class Gamers{
             position = sOrL;
     }
 }
- 
+
 public class LadderAndSnake {
     private int players;
     // it goes from 0 to number of
@@ -40,15 +46,6 @@ public class LadderAndSnake {
         return rand.nextInt(1,6);
     }
 
-    public void playerOrder()
-    {
-
-        for(int i=0; i < players; i++)
-        {
-            flipDice();
-        }
-    }
-
     public static int checkBoard(int i)
     {
         int pZeroBoard = 0;
@@ -62,15 +59,31 @@ public class LadderAndSnake {
         }
     }
 
-    public int playerOrder()
+    public int[] playerOrder()
     {
-      Gamer gamer1 = new Gamer;
-      Gamer gamer2 = new Gamer;
-      Gamer gamer3 = new Gamer;
-      Gamer gamer4 = new Gamer;
-      return 2;
-
+      Gamers gamer1 = new Gamers();
+      Gamers gamer2 = new Gamers();
+      Gamers gamer3 = new Gamers();
+      Gamers gamer4 = new Gamers();
+      int[] playerRolls = {0,0,0,0};
+      int numPlayers = 0;
+      for(int k=0; k < players; k++)
+      {
+          if(playerRolls[k]>0)
+          {
+              numPlayers= numPlayers + 1;
+          }
+      }
+      Gamers[] order = new Gamers[numPlayers];
+      for(int i = 0; i < players-1; i++)
+      {
+          int roll = flipDice();
+          playerRolls[i] = roll;
+      }
+        Arrays.sort(playerRolls);
+        return playerRolls;
     }
+
     public void play(){
 
     }
