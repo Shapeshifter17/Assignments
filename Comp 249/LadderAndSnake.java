@@ -13,6 +13,11 @@ class Gamers{
 
     }
 
+    public int flipDice(){
+        Random rand = new Random();
+        return rand.nextInt(1,6);
+    }
+
     public void add(int i){
         position = position + i;
         int sOrL = LadderAndSnake.checkBoard(i);
