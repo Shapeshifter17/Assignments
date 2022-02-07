@@ -61,7 +61,7 @@ public class LadderAndSnake {
         }
         for (int l = 0; l < playerRolls.length-1; l++)
         {
-            for (int m = 0; m < playerRolls.length-l-1; m++)
+            for (int m = l + 1; m < playerRolls.length-l-1; m++)
             {
                 if(playerRolls[l] < playerRolls[m]){
                     int temp = playerRolls[l];
