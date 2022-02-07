@@ -65,8 +65,13 @@ public class LadderAndSnake {
             {
                 if(playerRolls[l] < playerRolls[m]){
                     int temp = playerRolls[l];
+                    String tomp = playerString[l];
+
                     playerRolls[l] = playerRolls[l + 1];
+                    playerString[l] = playerString[l + 1];
+                    
                     playerRolls[l + 1] = temp;
+                    playerString[l + 1] = tomp;
                 }
             }
         }
