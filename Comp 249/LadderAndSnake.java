@@ -51,27 +51,27 @@ public class LadderAndSnake {
                 {
                     System.out.println("Player " + playerString[j] + " and player " + playerString[k] + " Have the same two numbers" );
                     int roll = flipDice();
-                    System.out.println("Player + " + j + " Has rolled + " + roll);
+                    System.out.println("Player + " + playerString[j] + " Has rolled " + roll);
                     playerRolls[j] = roll;
                     int roll2 = flipDice();
-                    System.out.println("Player + " + k + " Has rolled + " + roll2);
+                    System.out.println("Player + " + playerString[k]  + " Has rolled " + roll2);
                     playerRolls[k] = roll2;
                 }
             }
         }
         for (int l = 0; l < playerRolls.length-1; l++)
         {
-            for (int m = l + 1; m < playerRolls.length-l-1; m++)
+            for (int m = 1+l; m < playerRolls.length; m++)
             {
-                if(playerRolls[l] < playerRolls[m]){
-                    int temp = playerRolls[l];
-                    String tomp = playerString[l];
+                if(playerRolls[m] < playerRolls[l]){
+                    int temp = playerRolls[m];
+                    String tomp = playerString[m];
 
-                    playerRolls[l] = playerRolls[l + 1];
-                    playerString[l] = playerString[l + 1];
-                    
-                    playerRolls[l + 1] = temp;
-                    playerString[l + 1] = tomp;
+                    playerRolls[l] = playerRolls[m];
+                    playerString[l] = playerString[m];
+
+                    playerRolls[m] = temp;
+                    playerString[m] = tomp;
                 }
             }
         }
@@ -102,7 +102,7 @@ public class LadderAndSnake {
                 System.out.println("\nNEW PLAYER POSITIONS:");
                 for(int x = 0; x < getPlayers(); x++)
                 {
-                    System.out.println(order[x] + " is at sqaure " + positions[x] + "	");
+                    System.out.println(order[x] + " is at square " + positions[x] + "	");
                 }
                 System.out.println("\nRolling.......... ");
                 System.out.println(order[i] + " rolls " + nextRoll);
