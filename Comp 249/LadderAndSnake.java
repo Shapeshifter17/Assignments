@@ -38,17 +38,26 @@ public class LadderAndSnake {
         String[] playerString = {p1, p2, p3, p4};
         int i = 0;
         int[] playerRolls = {0, 0, 0, 0};
-        int temp = 0;
         while(i < getPlayers()){
             int flip = flipDice();
             System.out.println(playerString[i] + " rolls a " + flip);
-            while (flip == temp){
-                flip = flipDice();
-                System.out.println("Reroll! Player " + playerString[i] + " rolls a " + flip );
+            playerRolls[i] = flip; i++;
+        }
+        for (int j = 0; j < playerRolls.length; j++)
+        {
+            for (int k = i+1; k < playerRolls.length; k++)
+            {
+                while (playerRolls[j] == playerRolls[k])
+                {
+                    System.out.println("Player " + j + " and player " + k + " Have the same two numbers" );
+                    int roll = flipDice();
+                    System.out.println("Player + " + j + " Has rolled + " + roll);
+                    playerRolls[j] = roll;
+                    int roll2 = flipDice();
+                    System.out.println("Player + " + k + " Has rolled + " + roll2);
+                    playerRolls[k] = roll;
+                }
             }
-            playerRolls[i] = flip;
-            temp = flip;
-            i++;
         }
 
         return playerString;
