@@ -3,6 +3,24 @@ package Second;
 public class Quadcopter extends Helicopter{
     private int maxSpeed;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Quadcopter)) return false;
+        if (!super.equals(o)) return false;
+
+        Quadcopter that = (Quadcopter) o;
+
+        return getMaxSpeed() == that.getMaxSpeed();
+    }
+
+    @Override
+    public String toString() {
+        return "Quadcopter{" +
+                "maxSpeed=" + maxSpeed +
+                "} " + super.toString();
+    }
+
     public Quadcopter(){
         super();
     }
