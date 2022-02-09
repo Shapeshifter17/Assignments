@@ -3,14 +3,49 @@ package Second;
 import First.Airplane;
 
 public class Helicopter extends Airplane {
+
     private int cylinders;
     private int year;
+    private int capacity;
 
-    public Helicopter(){
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Helicopter)) return false;
+
+        Helicopter that = (Helicopter) o;
+
+        if (getCylinders() != that.getCylinders()) return false;
+        if (getYear() != that.getYear()) return false;
+        return getCapacity() == that.getCapacity();
     }
 
-    public Helicopter(String brand, double price, int horsepower) {
+    public Helicopter(){
+        super();
+    }
+
+    public Helicopter(String brand, double price, int horsepower, int cylinders, int year, int capacity) {
         super(brand, price, horsepower);
+        setCapacity(capacity);
+        setCylinders(cylinders);
+        setYear(year);
+    }
+
+    public Helicopter(Helicopter heli){
+        super(heli);
+        setCapacity(heli.getCapacity());
+        setCylinders(heli.getCylinders());
+        setYear(heli.getYear());
+    }
+
+    @Override
+    public String toString() {
+        return "Helicopter{" +
+                "cylinders=" + cylinders +
+                ", year=" + year +
+                ", capacity=" + capacity +
+                "} " + super.toString();
     }
 
     public int getCylinders() {
@@ -37,5 +72,4 @@ public class Helicopter extends Airplane {
         this.capacity = capacity;
     }
 
-    private int capacity;
 }
