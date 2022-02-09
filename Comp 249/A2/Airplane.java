@@ -5,13 +5,33 @@ public class Airplane {
     private double price;
     private int horsepower;
 
-    public Airplane(){
-
+    @Override
+    public String toString() {
+        return "Airplane{" +
+                "brand='" + brand + '\'' +
+                ", price=" + price +
+                ", horsepower=" + horsepower +
+                '}';
     }
+
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Airplane)) return false;
+
+        Airplane airplane = (Airplane) o;
+
+        if (Double.compare(airplane.getPrice(), getPrice()) != 0) return false;
+        if (getHorsepower() != airplane.getHorsepower()) return false;
+        return getBrand() != null ? getBrand().equals(airplane.getBrand()) : airplane.getBrand() == null;
+    }
+
 
     public Airplane(Airplane plane){
         this.setBrand (plane.getBrand());
-        this.setPrice(plane.getPrice()); 
+        this.setPrice(plane.getPrice());
         this.setHorsepower(plane.getHorsepower());
     }
 
@@ -19,6 +39,9 @@ public class Airplane {
         this.brand = brand;
         this.price = price;
         this.horsepower = horsepower;
+    }
+    public Airplane(){
+
     }
 
     public double getPrice() {
